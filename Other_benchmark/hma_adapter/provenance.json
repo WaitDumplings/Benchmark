@@ -1,0 +1,175 @@
+{
+  "schema": "hma_reference_adaptation_provenance_v1",
+  "created_utc": "2026-11-07T01:25:43.487817+00:00",
+  "report_name": "HMA adapted to the benchmark reference task",
+  "upstream_url": "https://github.com/0SliverBullet/EVRP-TW-SPD-HMA",
+  "upstream_revision": "0ebbcaa4c2b8385c2c9bff06d60689cb2c64229d",
+  "patch": "/data/Maojie/Other_benchmark/hma_adapter/hma_reference.patch",
+  "patch_sha256": "8db8eb639429d06ba08b29b3fe63e408c64eac3f4f6c519a92fbac8cd961d367",
+  "binary": "/data/Maojie/Other_benchmark/hma_adapter/bin/hma_reference",
+  "binary_sha256": "8a374cb481a89e107037dc38be695568331baca29cd53ee2528887c9af2fedad",
+  "original_binary_sha256": "c3da9643c48bfa6a450d47518ae9d798351a5d1b5c88c2561861ded08e350e23",
+  "adapter_sha256": "ee74610b2b0a6aaa34975ddcd4a18e1a147caaa5861ef20ace4e4214b7e9f4fe",
+  "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0",
+  "build_command": [
+    "bash",
+    "/data/Maojie/Other_benchmark/hma_adapter/build.sh"
+  ],
+  "source_sha256": {
+    "src/argparse.h": "2d26d5509a2a296ad799db50760efa12ab5ee5bcb2a21224197e6b0607381ffd",
+    "src/config.h": "6ba7de4e07bc1842f7314a39ec1bd824c535896d648e55652d19512e8c42468f",
+    "src/data.cpp": "4adf15750758c3ff1b4c1bb10173603db97476d330ec8b0fe4d1e17121d1a75a",
+    "src/data.h": "b8c4e4a9cb128dad0e3d9c848027cbd429a73b3c9a00388ef2eb1ddf419da087",
+    "src/eval.cpp": "fb7189833cab2734583f1386205d58804e89d82ca062597e3dfb446f102adbbd",
+    "src/eval.h": "218e1217aa4d2b5a024a77006d1e3dbb6ce8b6928772349e94dc09c0a78a2416",
+    "src/evolution.cpp": "44a7ee786e5e51d92febf5bc7350173be2ba40a716ef169a8e6880c237c65133",
+    "src/evolution.h": "bd5d2e124d89c3e993ea0ac2c7776ba846d4dbe30243a4125a9044fae81bed20",
+    "src/evrp_tw_spd_solver.cpp": "f84a9e8e651036f7fde4400aafac05ed2a49016974ffe92d90a37aec4d855e8a",
+    "src/evrp_tw_spd_solver.h": "59733a982558aefb9d2b4c4d08493f75a41fb5a49bad1c95d0e30b9889d26b9a",
+    "src/move.h": "f7a8bb64f17858bc3cd3558eb07717bce00713b20376f94a6dcbc3b371dd2e3d",
+    "src/operator.cpp": "a396bcec76b16a4942650d87d80c79d93be4b0b6887fa53837401880b6950824",
+    "src/operator.h": "6283f5ce5c29d3b433810158883cc8421f28a775ac6566d5180de523c7b31d22",
+    "src/reference_eval.h": "41960b045c65f7527e4ec7665977b6a43eb3667e43124ed8f6a91acb85ad952b",
+    "src/reference_runtime.cpp": "0db5c6e9b8d1f7c111b0929e15298db304523c7cd6f64c92ef88c6962725d8f8",
+    "src/reference_runtime.h": "9faa78fe6ec20bcf8da4ff8fb4edf0021a5051459837efcbc7734e713dc87f45",
+    "src/search_framework.cpp": "e1373bf774c93c187ddfa8f1df589e502bf4a2806fecf1e00eb94d1c91261f09",
+    "src/search_framework.h": "62f0080e7f7fe4ec7a2154a2f51d4ca93453c5ae5ea8953cc0d6c143f3f40e00",
+    "src/solution.cpp": "965b6887cb68afe2e15b8ed256878373e154ab0fa6fa31352cfac4845c066948",
+    "src/solution.h": "c73ebb4369560297879e2bb40042ad63a911c58f24523eabeb40fde7ff5609d5",
+    "src/util.cpp": "12bd332701009bc7bfc526138cdb7559b9deb831f45798a479e505cb6d0e119c",
+    "src/util.h": "f9f9dc819c3e94708ee0d18aad3caa14f6c1c876cf916ec41e9964beed6e97a1"
+  },
+  "task_adaptations": [
+    "Native benchmark_reference mode; original mode remains available and was smoke-regressed.",
+    "Exact canonical float32 time, distance, and energy promoted to double without changing values; no Floyd or shortest-path closure; direct hyperarcs and statistics retained in parent and subproblems.",
+    "Delivery-only demand in cm3; zero-pickup RCRS division guarded; no customer truncation.",
+    "Full recharge in all battery-aware insertion, status, station-adjustment, repair and final-check paths; per-station seconds/kWh derived from already-effective power; no SOC clamp; tolerance 1e-5.",
+    "Energy remains raw E_kwh; internal range coordinate uses consumption_rate=1 so RD represents kWh, never recomputes physical energy from distance.",
+    "Existing weighted vehicle_fixed_cost + distance_unit_cost applied to native search objective, route-count changes and candidate acceptance; no lexicographic fleet objective.",
+    "Dynamic insertion strides, status buffers and score arrays remove 100-node storage assumptions; move cache is lazy per actual route pair; reference Route Attr only grows with actual route length.",
+    "apply_move Data parameter changed from by-value to reference to avoid copying M^2 S tables and all matrices for each move; no neighborhood or acceptance behavior changed.",
+    "uint32 seeds preserve root stable_view_seed including values above INT_MAX.",
+    "Monotonic joint budget starts before adapter export by default or uses supplied parent start; native deadline checks, flushed timestamped candidate journal, synchronous verifier ACK waiting counted in budget.",
+    "PSI Candidate genes and population are dynamic by actual route dimension (population remains 3*dimension plus crossover slot), removing the author 100/301 hard storage bounds without disabling PSI or changing genetic operators.",
+    "apply_move reacquires the first Route reference after a split appends to the route vector; this avoids a dangling reference after vector reallocation.",
+    "Wrapper preserves ICLR_BENCHMARK_LOCK_FD through native subprocess pass_fds, after validating the descriptor. The final native child keeps the scheduler flock alive even if its Python wrapper dies. Native binary/search is unchanged."
+  ],
+  "preserved_search_identity": {
+    "initialization": "author RCRS, native default k_init=customer_count",
+    "search": "individual + population, CDNS, aggressive LS, conservative LS for Cus100, PSI/SSI, native decomposition",
+    "parallel_insertion": true,
+    "computational_threads": 1,
+    "runs": 1,
+    "g_1_consecutive_nonimproving": 20,
+    "population_size": 4,
+    "station_range_cus100": 0.5,
+    "station_range_cus500_cus1000": 0.1,
+    "subproblem_range": "max(1, customer_count//100)",
+    "explicit_arc_pruning": false,
+    "early_stop": "native stagnation remains; no budget-filling restarts or increased g_1",
+    "warm_start": false
+  },
+  "tests": {
+    "author_compatible_smoke": {
+      "instance": "data/akb_instances/c101C5.txt",
+      "seed": 1234,
+      "runs": 1,
+      "cost": 2257.747452,
+      "routes": 2,
+      "original_log": "/data/Maojie/Other_benchmark/hma_adapter/evidence/original_c101C5.log",
+      "adapted_native_mode_log": "/data/Maojie/Other_benchmark/hma_adapter/evidence/native_compat_c101C5.log",
+      "claim": "compile/runtime compatibility only, not paper-performance reproduction"
+    },
+    "canonical_route_conformance": {
+      "passed": true,
+      "cases": 21,
+      "evidence": "/data/Maojie/Other_benchmark/hma_adapter/evidence/canonical_comparison.json",
+      "max_abs_feasible_cost_error": 0.0
+    },
+    "canonical_tolerance_boundaries": {
+      "passed": true,
+      "cases": 8,
+      "evidence": "/data/Maojie/Other_benchmark/hma_adapter/evidence/tolerance_contract.json"
+    },
+    "move_deltas": {
+      "passed": true,
+      "cases": "merge, split, reverse under 3 directed/weighted instances",
+      "evidence": "/data/Maojie/Other_benchmark/hma_adapter/evidence/move_contract.log"
+    },
+    "memory_safety": {
+      "passed": true,
+      "checks": "ASAN+UBSAN including 122-node route/insertion/status and subproblem matrices",
+      "evidence": "/data/Maojie/Other_benchmark/hma_adapter/evidence/resource_contract_asan_host.log",
+      "sandbox_attempt": "LeakSanitizer unable to inspect threads under ptrace; successful rerun outside sandbox"
+    },
+    "budget_and_ack": {
+      "passed": true,
+      "evidence": "/data/Maojie/Other_benchmark/hma_adapter/evidence/budget_contract.json"
+    },
+    "post_smoke_memory_regression": {
+      "status": "passed",
+      "evidence": "/data/Maojie/Other_benchmark/hma_adapter/evidence/houston_failure/crash_fix_report.json",
+      "prior_smoke": "/data/Maojie/Other_benchmark/hma_adapter/evidence/houston_failure/smoke_review.json",
+      "psi_dimensions": [
+        101,
+        1001,
+        121,
+        11
+      ],
+      "psi_population_formula": "3 * dimension",
+      "copied_solution_split_then_merge": true,
+      "sanitizers": [
+        "AddressSanitizer",
+        "UndefinedBehaviorSanitizer"
+      ],
+      "leak_detection": false,
+      "release_houston_replay": "/data/Maojie/Other_benchmark/hma_adapter/evidence/houston_failure/release_after_fix/canonical_summary.json",
+      "full_native_sanitizer_exit": "wall_budget_exhausted, exit 0 at 300.10 s; 44/44 candidates canonical passed"
+    },
+    "scheduler_lock_inheritance": {
+      "passed": true,
+      "evidence": "/data/Maojie/Other_benchmark/hma_adapter/evidence/lock_inheritance.json",
+      "real_native_child": true,
+      "wrapper_sigkill_retains_flock": true,
+      "native_exit_releases_flock": true,
+      "invalid_fd_fails_closed": true,
+      "standalone_no_fd_compatible": true,
+      "previous_adapter_sha256": "33d841bbef605b7da72e34bb2c4a2e9cdceaf406f2aec12945f7f9a07461290c"
+    }
+  },
+  "resource_profile": {
+    "command": [
+      "/home/exx/anaconda3/envs/maojie/bin/python",
+      "/data/Maojie/Other_benchmark/hma_adapter/run.py",
+      "--input",
+      "/data/Maojie/Other_benchmark/benchmark_bridge/fixtures/real_cus1000/instance.json",
+      "--output-dir",
+      "/data/Maojie/Other_benchmark/hma_adapter/evidence/cus1000_profile_30s/run",
+      "--budget-s",
+      "30",
+      "--seed",
+      "2655651288"
+    ],
+    "returncode": 0,
+    "elapsed_s": 31.999953376998747,
+    "peak_tree_rss_bytes": 364597248,
+    "peak_native_rss_bytes": 328675328,
+    "max_native_threads": 1,
+    "native_cpu_s": 29.98,
+    "samples": 318,
+    "evidence": "/data/Maojie/Other_benchmark/hma_adapter/evidence/cus1000_profile_30s/summary.json",
+    "qualification": "30-second pre-processing/initialization profile only; no full candidate yet, so search/decomposition peak still requires longer parent-side sampling. This historical standalone measurement excluded native text export from budget; current wrapper includes export. Root supplied-start jobs always included it."
+  },
+  "remaining_disclosed_limits": [
+    "Author station rank range and SSI immediate/repeated-station cycle avoidance retained as search restrictions, not common task restrictions.",
+    "HMA relaxed station-removal search assumes travel-time triangle behavior; original task fastest-road-time matrices should satisfy this, but no closure is applied and explicit arc pruning is disabled. Arbitrary nonmetric time matrices may reduce search reachability even though full resource evaluator is exact.",
+    "Original related-removal implementation fails on the artificial 2-customer search fixture; direct resource evaluator tests use it, real search smoke uses Cus100. Failure logs retained and not interpreted as infeasibility proof.",
+    "M^2 S station ranking table is retained; concurrency ceiling 30 belongs to root global scheduler and requires parent 8/16/30 longer-profile qualification.",
+    "External existing canonical verifier is authoritative; invalid/no-candidate results never receive fabricated cost."
+  ],
+  "reproduce_probe": [
+    "python tests/compare_canonical.py",
+    "python tests/tolerance_contract.py",
+    "python tests/budget_contract.py"
+  ]
+}

@@ -1,0 +1,159 @@
+diff --git a/bindings/CMakeLists.txt b/bindings/CMakeLists.txt
+index 403979b38077ffc3de75b6f01fc1e6a33f3bd84b..83e8d46cb6a695027b392262461482f7a57bfb38 100644
+--- a/bindings/CMakeLists.txt
++++ b/bindings/CMakeLists.txt
+@@ -34,7 +34,9 @@ set(PYTHON_LIBS ${Python_LIBS})
+ CPMAddPackage(
+         NAME pybind11
+         GITHUB_REPOSITORY pybind/pybind11
+-        GIT_TAG smart_holder
++        # The upstream smart_holder branch was deleted after its merge. Pin its
++        # December 2023 implementation, contemporary with this RoutingBlocks revision.
++        GIT_TAG d2ac3f5c70c76c367a8af6592fc4ac2eb325b253
+ )
+ 
+ file(GLOB_RECURSE headers CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/include/routingblocks_bindings/*.h")
+diff --git a/bindings/src/LocalSearch.cpp b/bindings/src/LocalSearch.cpp
+index c1f4cabc023e58fbbe1dc5a826fb48c32cebd966..b22249e83a14b0c27ce5037b28e102f5a160a032 100644
+--- a/bindings/src/LocalSearch.cpp
++++ b/bindings/src/LocalSearch.cpp
+@@ -19,6 +19,7 @@
+ 
+ #include <pybind11/pybind11.h>
+ #include <pybind11/stl.h>
++#include <pybind11/functional.h>
+ #include <routingblocks/LocalSearch.h>
+ #include <routingblocks/utility/random.h>
+ #include <routingblocks_bindings/LocalSearch.h>
+@@ -69,6 +70,7 @@ namespace routingblocks::bindings {
+             .def(pybind11::init<const routingblocks::Instance&, std::shared_ptr<Evaluation>,
+                                 std::shared_ptr<Evaluation>, PivotingRule*>(),
+                  pybind11::keep_alive<1, 2>(), pybind11::keep_alive<1, 5>())
++            .def_readwrite("solution_callback", &LocalSearch::solution_callback)
+             .def(
+                 "optimize",
+                 [](LocalSearch& ls, Solution& sol, std::vector<Operator*> operators) -> void {
+diff --git a/bindings/src/bindings.cpp b/bindings/src/bindings.cpp
+index a11e8a4327b78f54fbdf6047feb1847050de82a4..6deeefb4a72f3907ac742b63301f95d4346334c4 100644
+--- a/bindings/src/bindings.cpp
++++ b/bindings/src/bindings.cpp
+@@ -32,6 +32,7 @@
+ #include "routingblocks_bindings/specializations/NIFTW.h"
+ 
+ using namespace routingblocks::bindings;
++namespace routingblocks::bindings { void bind_fullcharge(pybind11::module_&); }
+ 
+ #define STRINGIFY(x) #x
+ #define PREPROCESSOR_TO_STRING(x) STRINGIFY(x)
+@@ -72,4 +73,5 @@ PYBIND11_MODULE(routingblocks_MODULE_NAME, m) {
+     // Specializations
+     bind_adptw(m);
+     bind_niftw(m);
+-}
+\ No newline at end of file
++    bind_fullcharge(m);
++}
+diff --git a/native/include/routingblocks/FRVCP.h b/native/include/routingblocks/FRVCP.h
+index 968708ddd7f1e38e61978997b3b54b5b95c9614b..087425fceeeffc5f8b456d14b98eecbf7b29ec86 100644
+--- a/native/include/routingblocks/FRVCP.h
++++ b/native/include/routingblocks/FRVCP.h
+@@ -65,9 +65,9 @@ namespace routingblocks {
+ 
+         void clear() {
+             _vertices.clear();
+-            for (auto& successor_list : _successors) {
+-                successor_list.clear();
+-            }
++            // Vertices are rebuilt from index zero for every route. Retaining
++            // the old outer entries grows unused lists on every FPO call.
++            _successors.clear();
+         }
+ 
+         DPVertexID add_vertex(const Vertex& vertex) {
+diff --git a/native/include/routingblocks/LocalSearch.h b/native/include/routingblocks/LocalSearch.h
+index 1ccd11409d3a3efe0971294bbc03461ee6ed4061..1aa844554ffb0ffc6b2c16e3e9d0605f17a1e418 100644
+--- a/native/include/routingblocks/LocalSearch.h
++++ b/native/include/routingblocks/LocalSearch.h
+@@ -31,6 +31,7 @@ SOFTWARE.*/
+ #include <routingblocks/utility/random.h>
+ 
+ #include <memory>
++#include <functional>
+ #include <set>
+ #include <vector>
+ 
+@@ -339,6 +340,9 @@ namespace routingblocks {
+         [[nodiscard]] std::shared_ptr<Move> _explore_neighborhood();
+ 
+       public:
++        // Optional observer: publish complete accepted candidates immediately,
++        // including those generated inside a long local-search invocation.
++        std::function<void(const Solution&)> solution_callback;
+         // Run the local search with the specified penalty values
+         template <class ForwardIterator>
+             requires std::same_as<typename ForwardIterator::value_type, Operator*>
+@@ -355,6 +359,7 @@ namespace routingblocks {
+                 if (!first_improving_move) break;
+ 
+                 _apply_move(*first_improving_move);
++                if (solution_callback) solution_callback(_current_solution);
+             }
+ 
+             sol = std::move(_current_solution);
+diff --git a/native/include/routingblocks/operators/SwapOperator.h b/native/include/routingblocks/operators/SwapOperator.h
+index b3fb56716de5b9b7a82725ec3de480934a333d1c..db46fd38e96294066a09838632e2d7948c82762b 100644
+--- a/native/include/routingblocks/operators/SwapOperator.h
++++ b/native/include/routingblocks/operators/SwapOperator.h
+@@ -121,12 +121,14 @@ namespace routingblocks {
+                 delta_cost += concatenate(
+                     evaluation, instance, route_segment{origin_route->begin(), swap_origin_begin},
+                     route_segment{swap_target_begin, swap_target_end},
+-                    route_segment{swap_origin_end, origin_route->end_depot()});
++                    // Forward-based full recharge requires the return-depot arc
++                    // explicitly; concatenation-based evaluators also accept it.
++                    route_segment{swap_origin_end, origin_route->end()});
+ 
+                 delta_cost += concatenate(
+                     evaluation, instance, route_segment{target_route->begin(), swap_target_begin},
+                     route_segment{swap_origin_begin, swap_origin_end},
+-                    route_segment{swap_target_end, target_route->end_depot()});
++                    route_segment{swap_target_end, target_route->end()});
+ 
+                 delta_cost -= origin_route->cost();
+                 delta_cost -= target_route->cost();
+diff --git a/native/include/routingblocks/types.h b/native/include/routingblocks/types.h
+index de7a3fa7da44c4babbcf1dea51e74ea09d757674..a51df05b122d20a21fa4e30323184e885d5a88a5 100644
+--- a/native/include/routingblocks/types.h
++++ b/native/include/routingblocks/types.h
+@@ -22,7 +22,8 @@
+ #ifndef routingblocks_TYPES_H
+ #define routingblocks_TYPES_H
+ 
+-using resource_t = float;
+-using cost_t = float;
++// Benchmark adaptation: preserve physical quantities and full-precision costs.
++using resource_t = double;
++using cost_t = double;
+ 
+ #endif  // routingblocks_TYPES_H
+diff --git a/native/src/operators/InsertStationOperator.cpp b/native/src/operators/InsertStationOperator.cpp
+index c02c51966eefb21c0bb7389caeb2d76a23a2d333..5dc48e7b1fd46365af1d7546458847524a2db931 100644
+--- a/native/src/operators/InsertStationOperator.cpp
++++ b/native/src/operators/InsertStationOperator.cpp
+@@ -24,7 +24,8 @@ namespace routingblocks {
+     cost_t InsertStationMove::get_cost_delta(Evaluation& evaluation, const Instance& instance,
+                                              const Solution& solution) const {
+         auto [route, node] = to_iter(_after_node, solution);
+-        const auto& station = instance.getVertex(_station_id);
++        // _station_id is an index into the station roster, as in apply().
++        const auto& station = instance.getStation(_station_id);
+ 
+         cost_t cost = evaluate_insertion(evaluation, instance, *route, node, station);
+         return cost - route->cost();
+@@ -92,4 +93,4 @@ namespace routingblocks {
+ 
+     InsertStationOperator::InsertStationOperator(const Instance& instance) : _instance(instance) {}
+ 
+-}  // namespace routingblocks
+\ No newline at end of file
++}  // namespace routingblocks

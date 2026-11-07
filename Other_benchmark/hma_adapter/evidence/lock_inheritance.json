@@ -1,0 +1,24 @@
+{
+  "blocked_while_orphan_native_alive": true,
+  "released_after_native_exit": true,
+  "passed": true,
+  "native_pid": 8,
+  "wrapper_returncode": -9,
+  "inherited_fd": 3,
+  "native_descriptor_matches_lock": true,
+  "malformed_closed_and_negative_fds_rejected": true,
+  "standalone_without_lock_compatible": true,
+  "output": "/data/Maojie/Other_benchmark/hma_adapter/evidence/lock_inheritance_1794014731227834763",
+  "command": [
+    "/home/exx/anaconda3/envs/maojie/bin/python",
+    "/data/Maojie/Other_benchmark/hma_adapter/run.py",
+    "--input",
+    "/data/Maojie/Other_benchmark/hma_adapter/evidence/fixtures/resources/instance.json",
+    "--output-dir",
+    "/data/Maojie/Other_benchmark/hma_adapter/evidence/lock_inheritance_1794014731227834763/run",
+    "--budget-s",
+    "10",
+    "--ack-file",
+    "/data/Maojie/Other_benchmark/hma_adapter/evidence/lock_inheritance_1794014731227834763/never_ack"
+  ]
+}

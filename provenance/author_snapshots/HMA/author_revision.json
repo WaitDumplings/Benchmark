@@ -1,0 +1,14 @@
+{
+  "expected_head": "0ebbcaa4c2b8385c2c9bff06d60689cb2c64229d",
+  "git_diff_binary_sha256": "e59e3d70f877aac4bc29a3650331e2b6e9740cfd10afcadfc05b6a8b26edb7b0",
+  "head": "0ebbcaa4c2b8385c2c9bff06d60689cb2c64229d",
+  "included_ignored_sources": [],
+  "included_untracked_sources": [],
+  "omitted_untracked_files": [],
+  "patch_covers": "git diff --binary --full-index HEAD (staged and unstaged tracked changes)",
+  "repository": "/data/Maojie/Other_benchmark/vendor/HMA",
+  "schema": "pinned_author_worktree_snapshot_v1",
+  "status_porcelain": " M src/data.cpp\n M src/data.h\n M src/eval.cpp\n M src/eval.h\n M src/evolution.cpp\n M src/evrp_tw_spd_solver.cpp\n M src/operator.cpp\n A src/reference_eval.h\n A src/reference_runtime.cpp\n A src/reference_runtime.h\n M src/search_framework.cpp\n M src/search_framework.h\n M src/solution.h\n",
+  "tracked_source_files_in_snapshot": 24,
+  "untracked_source_handling": "Actual file content is packaged under source/Other_benchmark/vendor; it is not assumed to occur in git diff."
+}

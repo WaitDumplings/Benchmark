@@ -1,0 +1,174 @@
+{
+  "passed": true,
+  "case_count": 21,
+  "results": [
+    {
+      "instance": "directed_reverse",
+      "case": "forward",
+      "passed": true,
+      "canonical_feasible": true,
+      "native_feasible": true,
+      "cost_delta": 0.0
+    },
+    {
+      "instance": "directed_reverse",
+      "case": "reverse",
+      "passed": true,
+      "canonical_feasible": true,
+      "native_feasible": true,
+      "cost_delta": 0.0
+    },
+    {
+      "instance": "service_start_wait_return_140",
+      "case": "wait_then_service",
+      "passed": true,
+      "canonical_feasible": true,
+      "native_feasible": true,
+      "cost_delta": 0.0
+    },
+    {
+      "instance": "service_start_wait_return_139",
+      "case": "wait_then_service",
+      "passed": true,
+      "canonical_feasible": false,
+      "native_feasible": false,
+      "cost_delta": null
+    },
+    {
+      "instance": "missed_service_start",
+      "case": "late_arrival",
+      "passed": true,
+      "canonical_feasible": false,
+      "native_feasible": false,
+      "cost_delta": null
+    },
+    {
+      "instance": "full_charge_mixed_power_2000",
+      "case": "fast_station",
+      "passed": true,
+      "canonical_feasible": true,
+      "native_feasible": true,
+      "cost_delta": 0.0
+    },
+    {
+      "instance": "full_charge_mixed_power_2000",
+      "case": "slow_station",
+      "passed": true,
+      "canonical_feasible": false,
+      "native_feasible": false,
+      "cost_delta": null
+    },
+    {
+      "instance": "full_charge_mixed_power_1000",
+      "case": "fast_station",
+      "passed": true,
+      "canonical_feasible": false,
+      "native_feasible": false,
+      "cost_delta": null
+    },
+    {
+      "instance": "full_charge_mixed_power_1000",
+      "case": "slow_station",
+      "passed": true,
+      "canonical_feasible": false,
+      "native_feasible": false,
+      "cost_delta": null
+    },
+    {
+      "instance": "volume_and_exactly_once",
+      "case": "two_routes",
+      "passed": true,
+      "canonical_feasible": true,
+      "native_feasible": true,
+      "cost_delta": 0.0
+    },
+    {
+      "instance": "volume_and_exactly_once",
+      "case": "over_capacity",
+      "passed": true,
+      "canonical_feasible": false,
+      "native_feasible": false,
+      "cost_delta": null
+    },
+    {
+      "instance": "volume_and_exactly_once",
+      "case": "missing",
+      "passed": true,
+      "canonical_feasible": false,
+      "native_feasible": false,
+      "cost_delta": null
+    },
+    {
+      "instance": "volume_and_exactly_once",
+      "case": "duplicate",
+      "passed": true,
+      "canonical_feasible": false,
+      "native_feasible": false,
+      "cost_delta": null
+    },
+    {
+      "instance": "volume_and_exactly_once",
+      "case": "empty_extra",
+      "passed": true,
+      "canonical_feasible": false,
+      "native_feasible": false,
+      "cost_delta": null
+    },
+    {
+      "instance": "volume_and_exactly_once",
+      "case": "station_only_extra",
+      "passed": true,
+      "canonical_feasible": false,
+      "native_feasible": false,
+      "cost_delta": null
+    },
+    {
+      "instance": "volume_and_exactly_once",
+      "case": "internal_depot",
+      "passed": true,
+      "canonical_feasible": false,
+      "native_feasible": false,
+      "cost_delta": null
+    },
+    {
+      "instance": "route_over_100_nodes",
+      "case": "one_long_route",
+      "passed": true,
+      "canonical_feasible": true,
+      "native_feasible": true,
+      "cost_delta": 0.0
+    },
+    {
+      "instance": "weighted_not_lexicographic",
+      "case": "one_vehicle_costlier",
+      "passed": true,
+      "canonical_feasible": true,
+      "native_feasible": true,
+      "cost_delta": 0.0
+    },
+    {
+      "instance": "weighted_not_lexicographic",
+      "case": "two_vehicles_cheaper",
+      "passed": true,
+      "canonical_feasible": true,
+      "native_feasible": true,
+      "cost_delta": 0.0
+    },
+    {
+      "instance": "weighted_not_distance_only",
+      "case": "one_vehicle_cheaper",
+      "passed": true,
+      "canonical_feasible": true,
+      "native_feasible": true,
+      "cost_delta": 0.0
+    },
+    {
+      "instance": "weighted_not_distance_only",
+      "case": "two_vehicles_shorter",
+      "passed": true,
+      "canonical_feasible": true,
+      "native_feasible": true,
+      "cost_delta": 0.0
+    }
+  ]
+}

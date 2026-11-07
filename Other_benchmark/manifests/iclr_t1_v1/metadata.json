@@ -1,0 +1,329 @@
+{
+  "base_seed": 1234,
+  "created_at_utc": "2026-11-07T00:54:00.176972+00:00",
+  "current_content_aggregate_sha256": "93ecf4b57fc044feaaa17c83bbd17318f766da68f3ca3a86cf4a4c5a055055ef",
+  "dataset_root": "/data/Maojie/ICLR/EVRPTW-DB/EVRPTW_Dataset/Instances_v2/us_11city",
+  "evidence": {
+    "benchmark_loader_verifier_source": {
+      "mtime_ns": 1789800047649652041,
+      "path": "/data/Maojie/ICLR/EVRPTW-DB/EVRPTW_Benchmark/MetaHeuristics/benchmark_common.py",
+      "sha256": "6d5f8ae774d432e108ae90c298ef77b6e2fc0f400622c38893d2593104023ed6",
+      "size_bytes": 44018
+    },
+    "charging_power_medians": {
+      "mtime_ns": 1787719063795105827,
+      "path": "/data/Maojie/ICLR/EVRPTW-DB/EVRPTW_Dataset/Instances_v2/us_11city/_reconstruction/us_national_charging_power_medians_v1.json",
+      "sha256": "4a181a8440839602679be5f8d8c823b5d6f5fc5ff3b7211768c87d2fa0c87f57",
+      "size_bytes": 1266
+    },
+    "cohort_freezer_source": {
+      "mtime_ns": 1794012821635341909,
+      "path": "/data/Maojie/Other_benchmark/benchmark_bridge/cohort.py",
+      "sha256": "b098b010780a2d53a08e20261027f4d011ebd13ffc78898f83eafe944dce7a6f",
+      "size_bytes": 18883
+    },
+    "family_index": {
+      "mtime_ns": 1787719063919107432,
+      "path": "/data/Maojie/ICLR/EVRPTW-DB/EVRPTW_Dataset/Instances_v2/us_11city/generation_plan/core/test/test1_new_seed/family_index.parquet",
+      "sha256": "f239c3f2495abc002f08d95c1cf0e9c0cdb0c30c8bce2b6369591656cd87b202",
+      "size_bytes": 118475
+    },
+    "historical_neural_provenance": {
+      "mtime_ns": 1789280608288329953,
+      "path": "/data/Maojie/ICLR/EVRPTW-DB/EVRPTW_Benchmark/results_legacy/TERRAN_stable_cost_v1/eval_after_val2100_20260912/tests/provenance.json",
+      "sha256": "493bdb4896e7eda6115b5ebcb1a8303def071c1ab7a0d44e99384ed2988be717",
+      "size_bytes": 61653
+    },
+    "historical_neural_routes": {
+      "mtime_ns": 1789281334374440772,
+      "path": "/data/Maojie/ICLR/EVRPTW-DB/EVRPTW_Benchmark/results_legacy/TERRAN_stable_cost_v1/eval_after_val2100_20260912/tests/test1_new_seed/perinstance.jsonl",
+      "sha256": "5b09278df0fb0d46d719c92c6f8fa4c7ca2a5fcc433df7e40aa7099d503a4524",
+      "size_bytes": 1640832
+    },
+    "historical_neural_summary": {
+      "mtime_ns": 1789281334382440931,
+      "path": "/data/Maojie/ICLR/EVRPTW-DB/EVRPTW_Benchmark/results_legacy/TERRAN_stable_cost_v1/eval_after_val2100_20260912/tests/test1_new_seed/summary.json",
+      "sha256": "d953b7c10af51b941ad272f5c9737cfa209e7c8a74e60c68ff80ee680512284a",
+      "size_bytes": 2453
+    },
+    "loader_source": {
+      "mtime_ns": 1787718984086074566,
+      "path": "/data/Maojie/ICLR/EVRPTW-DB/EVRPTW_Dataset_Generator/src/evrptw_stage2/artifacts.py",
+      "sha256": "cb8a378119dadbb7adb0b8c8ee6ea24d8cfb9e26038932806197dbd8c87c060e",
+      "size_bytes": 20767
+    },
+    "matrix_restore_report": {
+      "mtime_ns": 1787735215776172147,
+      "path": "/data/Maojie/ICLR/EVRPTW-DB/EVRPTW_Dataset/Instances_v2/us_11city/matrix_restore_report.json",
+      "sha256": "16ac1c3b3fc41e84e78fe8bbc91e0d743427d577dcb110b38589e3151523d846",
+      "size_bytes": 12894357
+    },
+    "neural_verifier_source": {
+      "mtime_ns": 1789800047645651933,
+      "path": "/data/Maojie/ICLR/EVRPTW-DB/EVRPTW_Benchmark/Exact/Gurobi_Solver/route_validator.py",
+      "sha256": "9e2a1688ac8d22814d6eeb427b24e784ff174ac2b217ab02e6fff3ad6c5751f8",
+      "size_bytes": 9127
+    },
+    "objective_adapter_source": {
+      "mtime_ns": 1789800047661652360,
+      "path": "/data/Maojie/ICLR/EVRPTW-DB/EVRPTW_Core/evrptw_core/objective.py",
+      "sha256": "00eb85ba03831695232bd8eadfbb276403a51f63feaf663438e21ccdee986685",
+      "size_bytes": 6104
+    },
+    "objective_profile": {
+      "mtime_ns": 1788849567571694481,
+      "path": "/data/Maojie/ICLR/EVRPTW-DB/EVRPTW_Benchmark/Reinforcement_Learning/configs/rivian_energy_vehicle_cost_v2.json",
+      "sha256": "0be3e737592bdee85d11ed344cf1a90fc2933238b5fabf5ce7f793296b9361a6",
+      "size_bytes": 1385
+    },
+    "reconstruction_contract": {
+      "mtime_ns": 1787719063795105827,
+      "path": "/data/Maojie/ICLR/EVRPTW-DB/EVRPTW_Dataset/Instances_v2/us_11city/_reconstruction/reconstruction_contract.json",
+      "sha256": "e1d4518bfdebaf01429804e3301df277f82a2e7f530f48daa8903b34fd7017e2",
+      "size_bytes": 6612
+    },
+    "reconstruction_instance_registry": {
+      "mtime_ns": 1787719063795105827,
+      "path": "/data/Maojie/ICLR/EVRPTW-DB/EVRPTW_Dataset/Instances_v2/us_11city/_reconstruction/instance_registry.parquet",
+      "sha256": "ced2f805b7a8d22b897d741e07f284c503d42178e506378ffa32de2eec27e98d",
+      "size_bytes": 6858730
+    },
+    "reference_profile": {
+      "mtime_ns": 1787719063795105827,
+      "path": "/data/Maojie/ICLR/EVRPTW-DB/EVRPTW_Dataset/Instances_v2/us_11city/_reconstruction/reference_profile.json",
+      "sha256": "81ca1f8f46b8e27b780b48f317fe24f2827f931cc1cf219016b01c4330958256",
+      "size_bytes": 4640
+    },
+    "run_manifest": {
+      "mtime_ns": 1787719170624489642,
+      "path": "/data/Maojie/ICLR/EVRPTW-DB/EVRPTW_Dataset/Instances_v2/us_11city/run_manifest.json",
+      "sha256": "5a88b88c75fae35519ab6a32152bbcd6c055dc6de0b9ceca447ba17174fad83c",
+      "size_bytes": 1775
+    },
+    "split_registry": {
+      "mtime_ns": 1787719063923107484,
+      "path": "/data/Maojie/ICLR/EVRPTW-DB/EVRPTW_Dataset/Instances_v2/us_11city/generation_plan/split_registry.json",
+      "sha256": "42e6c11cedf2c9754fe09ba5f25f14b8277a0fb03843436009fb5b64979e29e4",
+      "size_bytes": 17853
+    },
+    "test_index": {
+      "mtime_ns": 1787719063919107432,
+      "path": "/data/Maojie/ICLR/EVRPTW-DB/EVRPTW_Dataset/Instances_v2/us_11city/generation_plan/core/test/test1_new_seed/view_index.parquet",
+      "sha256": "3c2a9d91e00b9e9f130f8e9a4668c0041635de30f55fa98995080b42be045c07",
+      "size_bytes": 81486
+    }
+  },
+  "file_hashes_sha256": "b0bb984cf947fdbd0b382b00d854d9c610efa30d44d3aa987e911f4ae0f3a3ff",
+  "finished_at_utc": "2026-11-07T00:55:41.192898+00:00",
+  "generation_code_provenance": {
+    "code_branch": "stage2-repair-candidate",
+    "code_commit": "bbde5db48dc3f939906fbafdfb18b5b973ae04f1",
+    "repository_root": "/data/Maojie/ICLR/EVRPTW-DB",
+    "schema": "evrptw_code_provenance_v1",
+    "working_tree_clean": true
+  },
+  "groups": {
+    "formal": {
+      "count": 1000,
+      "counts_by_scale_city": {
+        "Cus1000/chicago": 50,
+        "Cus1000/dallas": 50,
+        "Cus1000/fort-worth": 50,
+        "Cus1000/houston": 50,
+        "Cus1000/los-angeles": 50,
+        "Cus1000/new-york": 50,
+        "Cus1000/philadelphia": 50,
+        "Cus1000/phoenix": 50,
+        "Cus1000/san-antonio": 50,
+        "Cus1000/san-diego": 50,
+        "Cus500/chicago": 50,
+        "Cus500/dallas": 50,
+        "Cus500/fort-worth": 50,
+        "Cus500/houston": 50,
+        "Cus500/los-angeles": 50,
+        "Cus500/new-york": 50,
+        "Cus500/philadelphia": 50,
+        "Cus500/phoenix": 50,
+        "Cus500/san-antonio": 50,
+        "Cus500/san-diego": 50
+      },
+      "input_hash_status": "complete",
+      "manifest": "formal.jsonl",
+      "manifest_sha256": "cbf7f5e185c223f07e975e323da24590ccbf9c52538c89a60b22305dbc81fec9",
+      "ordered_view_ids_sha256": "0a42c344a4433561cb28f3645d152870280e165eae80dca25830807547158065"
+    },
+    "panel": {
+      "count": 60,
+      "counts_by_scale_city": {
+        "Cus1000/chicago": 3,
+        "Cus1000/dallas": 3,
+        "Cus1000/fort-worth": 3,
+        "Cus1000/houston": 3,
+        "Cus1000/los-angeles": 3,
+        "Cus1000/new-york": 3,
+        "Cus1000/philadelphia": 3,
+        "Cus1000/phoenix": 3,
+        "Cus1000/san-antonio": 3,
+        "Cus1000/san-diego": 3,
+        "Cus500/chicago": 3,
+        "Cus500/dallas": 3,
+        "Cus500/fort-worth": 3,
+        "Cus500/houston": 3,
+        "Cus500/los-angeles": 3,
+        "Cus500/new-york": 3,
+        "Cus500/philadelphia": 3,
+        "Cus500/phoenix": 3,
+        "Cus500/san-antonio": 3,
+        "Cus500/san-diego": 3
+      },
+      "input_hash_status": "complete",
+      "manifest": "panel.jsonl",
+      "manifest_sha256": "1e01fed194c2dc2133995f8958e18202d0f597c36018d98963248d3b10869403",
+      "ordered_view_ids_sha256": "bbda9d50d1111c28478f5be725700f6574988a0a247af82828a3e4beef851470"
+    },
+    "smoke": {
+      "count": 10,
+      "counts_by_scale_city": {
+        "Cus100/chicago": 1,
+        "Cus100/dallas": 1,
+        "Cus100/fort-worth": 1,
+        "Cus100/houston": 1,
+        "Cus100/los-angeles": 1,
+        "Cus100/new-york": 1,
+        "Cus100/philadelphia": 1,
+        "Cus100/phoenix": 1,
+        "Cus100/san-antonio": 1,
+        "Cus100/san-diego": 1
+      },
+      "input_hash_status": "complete",
+      "manifest": "smoke.jsonl",
+      "manifest_sha256": "1cdaac2664759dce5ce02bd886fdd46d5044e36af976756d965790f5d56b96eb",
+      "ordered_view_ids_sha256": "d86a96078500dfe290f1db6c2ccaa40cf8a4f3753403d3a544aeef8660ed8d92"
+    }
+  },
+  "hash_semantics": "SHA256 of current loader-consumed on-disk bytes; not a retrospective submission hash claim.",
+  "hashed_bytes": 9194530945,
+  "hashed_files": 7040,
+  "historical_neural_cus1000": {
+    "final_submitted_neural_cohort_proven": false,
+    "same_source_index_release": true
+  },
+  "historical_neural_cus500": {
+    "archive": "/data/Maojie/ICLR/EVRPTW-DB/EVRPTW_Benchmark/results_legacy/TERRAN_stable_cost_v1/eval_after_val2100_20260912/tests/provenance.json",
+    "historical_cost_distance_source": "distance_matrix_km",
+    "index_sha256_matches": true,
+    "ordered_500_view_ids_match": true,
+    "publication_table_identity_proven": false
+  },
+  "historical_reconstruction_file_hash_validation_performed": false,
+  "historical_restore_file_hash_validation_performed": false,
+  "historical_restore_validation_contract": "shape_dtype_finite_and_full_family_feasibility_no_hash",
+  "limitations": [
+    "Hashes bind the current existing files, not unrecorded historical submission bytes.",
+    "Archived reconstruction and matrix restore explicitly did not validate content hashes.",
+    "Cus500 matches the archived executed Neural T1 500 IDs and index hash; that archive is not proof of the final submitted paper table.",
+    "Cus1000 shares the same frozen T1 index release; its final submitted Neural test roster has not been established locally.",
+    "The archived Neural Cus500 test priced D_dist; its costs must not be directly compared with this D_time task.",
+    "This script freezes data and checks loader structure only; it does not run or validate either heuristic solver."
+  ],
+  "objective_config": {
+    "consumption_kwh_per_km": 0.38910505836575876,
+    "electricity_price_usd_per_kwh": 0.39,
+    "mode": "energy_vehicle_cost",
+    "profile_id": "rivian_energy_vehicle_cost_v2",
+    "vehicle_fixed_cost_usd": 413.6331536717643
+  },
+  "objective_distance_source": "running_time_path_distance_km",
+  "schema": "iclr_t1_cohort_freeze_v1",
+  "seed_scheme": "blake2b_view_id_v1",
+  "selection_rule": "Sort SHA256(domain + NUL + base_seed + NUL + view_id) within each city; no performance information is used.",
+  "selection_scheme": "iclr_t1_city_panel_sha256_seed1234_v1",
+  "smoke_loader_checks": [
+    {
+      "city_slug": "chicago",
+      "num_customers": 100,
+      "num_stations": 20,
+      "objective_distance_source": "running_time_path_distance_km",
+      "passed": true,
+      "view_id": "iv_2b031fa04f9fed36ee4ade51"
+    },
+    {
+      "city_slug": "dallas",
+      "num_customers": 100,
+      "num_stations": 20,
+      "objective_distance_source": "running_time_path_distance_km",
+      "passed": true,
+      "view_id": "iv_45ec73b4e91db804a064d842"
+    },
+    {
+      "city_slug": "fort-worth",
+      "num_customers": 100,
+      "num_stations": 20,
+      "objective_distance_source": "running_time_path_distance_km",
+      "passed": true,
+      "view_id": "iv_d495797b586427ae8f42d412"
+    },
+    {
+      "city_slug": "houston",
+      "num_customers": 100,
+      "num_stations": 20,
+      "objective_distance_source": "running_time_path_distance_km",
+      "passed": true,
+      "view_id": "iv_7cb53d6f98d45d414a59d2bc"
+    },
+    {
+      "city_slug": "los-angeles",
+      "num_customers": 100,
+      "num_stations": 20,
+      "objective_distance_source": "running_time_path_distance_km",
+      "passed": true,
+      "view_id": "iv_35f84bad389ec5274181bb71"
+    },
+    {
+      "city_slug": "new-york",
+      "num_customers": 100,
+      "num_stations": 20,
+      "objective_distance_source": "running_time_path_distance_km",
+      "passed": true,
+      "view_id": "iv_73848a97e1bd60a99cf128a2"
+    },
+    {
+      "city_slug": "philadelphia",
+      "num_customers": 100,
+      "num_stations": 20,
+      "objective_distance_source": "running_time_path_distance_km",
+      "passed": true,
+      "view_id": "iv_00b222f94d5a5e7218417642"
+    },
+    {
+      "city_slug": "phoenix",
+      "num_customers": 100,
+      "num_stations": 20,
+      "objective_distance_source": "running_time_path_distance_km",
+      "passed": true,
+      "view_id": "iv_802e7a234359e0d4ba375371"
+    },
+    {
+      "city_slug": "san-antonio",
+      "num_customers": 100,
+      "num_stations": 20,
+      "objective_distance_source": "running_time_path_distance_km",
+      "passed": true,
+      "view_id": "iv_862e286d7f90520eb491bd0d"
+    },
+    {
+      "city_slug": "san-diego",
+      "num_customers": 100,
+      "num_stations": 20,
+      "objective_distance_source": "running_time_path_distance_km",
+      "passed": true,
+      "view_id": "iv_d177897906fc5c2a70e2190c"
+    }
+  ],
+  "source_release_name": "us_11city_full_clean_v7_bbde5db_20260823",
+  "status": "complete",
+  "unique_input_bytes": 9194530945,
+  "unique_input_files": 7040,
+  "updated_at_utc": "2026-11-07T00:55:40.565309+00:00",
+  "wall_seconds": 114.871453492
+}

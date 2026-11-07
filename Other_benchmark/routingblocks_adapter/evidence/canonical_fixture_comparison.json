@@ -1,0 +1,563 @@
+{
+  "passed": true,
+  "cases": 21,
+  "results": [
+    {
+      "fixture": "directed_reverse",
+      "case": "forward",
+      "passed": true,
+      "native_solution_feasible": true,
+      "canonical_feasible": true,
+      "native_route_resources": [
+        [
+          414.54365950834017,
+          6.0,
+          2.0,
+          0.0,
+          0.0,
+          3.0,
+          997.6653697192669,
+          0.0,
+          0.0,
+          2.0
+        ]
+      ],
+      "canonical_cost_usd": 414.54365950834017,
+      "absolute_cost_error": 0.0
+    },
+    {
+      "fixture": "directed_reverse",
+      "case": "reverse",
+      "passed": true,
+      "native_solution_feasible": true,
+      "canonical_feasible": true,
+      "native_route_resources": [
+        [
+          417.27517701806784,
+          24.0,
+          2.0,
+          0.0,
+          0.0,
+          3.0,
+          990.6614787578583,
+          0.0,
+          0.0,
+          2.0
+        ]
+      ],
+      "canonical_cost_usd": 417.27517701806784,
+      "absolute_cost_error": 0.0
+    },
+    {
+      "fixture": "full_charge_mixed_power_1000",
+      "case": "fast_station",
+      "passed": true,
+      "native_solution_feasible": false,
+      "canonical_feasible": false,
+      "native_route_resources": [
+        [
+          418.31315369491966,
+          30.84000015258789,
+          1.0,
+          0.0,
+          930.0,
+          1470.0,
+          4.0,
+          1440.0,
+          1.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "fixture": "full_charge_mixed_power_1000",
+      "case": "slow_station",
+      "passed": true,
+      "native_solution_feasible": false,
+      "canonical_feasible": false,
+      "native_route_resources": [
+        [
+          418.31315369491966,
+          30.84000015258789,
+          1.0,
+          0.0,
+          12450.0,
+          7230.0,
+          4.0,
+          7200.0,
+          1.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "fixture": "full_charge_mixed_power_2000",
+      "case": "fast_station",
+      "passed": true,
+      "native_solution_feasible": true,
+      "canonical_feasible": true,
+      "native_route_resources": [
+        [
+          418.31315369491966,
+          30.84000015258789,
+          1.0,
+          0.0,
+          0.0,
+          1470.0,
+          4.0,
+          1440.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "canonical_cost_usd": 418.31315369491966,
+      "absolute_cost_error": 0.0
+    },
+    {
+      "fixture": "full_charge_mixed_power_2000",
+      "case": "slow_station",
+      "passed": true,
+      "native_solution_feasible": false,
+      "canonical_feasible": false,
+      "native_route_resources": [
+        [
+          418.31315369491966,
+          30.84000015258789,
+          1.0,
+          0.0,
+          10450.0,
+          7230.0,
+          4.0,
+          7200.0,
+          1.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "fixture": "missed_service_start",
+      "case": "late_arrival",
+      "passed": true,
+      "native_solution_feasible": false,
+      "canonical_feasible": false,
+      "native_route_resources": [
+        [
+          413.9366556172896,
+          2.0,
+          1.0,
+          0.0,
+          5.0,
+          145.0,
+          999.2217898964882,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "fixture": "route_over_100_nodes",
+      "case": "one_long_route",
+      "passed": true,
+      "native_solution_feasible": true,
+      "canonical_feasible": true,
+      "native_route_resources": [
+        [
+          433.51253110367094,
+          131.0,
+          130.0,
+          0.0,
+          0.0,
+          131.0,
+          949.0272382199764,
+          0.0,
+          0.0,
+          130.0
+        ]
+      ],
+      "canonical_cost_usd": 433.51253110367094,
+      "absolute_cost_error": 0.0
+    },
+    {
+      "fixture": "service_start_wait_return_139",
+      "case": "wait_then_service",
+      "passed": true,
+      "native_solution_feasible": false,
+      "canonical_feasible": false,
+      "native_route_resources": [
+        [
+          413.9366556172896,
+          2.0,
+          1.0,
+          0.0,
+          1.0,
+          140.0,
+          999.2217898964882,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "fixture": "service_start_wait_return_140",
+      "case": "wait_then_service",
+      "passed": true,
+      "native_solution_feasible": true,
+      "canonical_feasible": true,
+      "native_route_resources": [
+        [
+          413.9366556172896,
+          2.0,
+          1.0,
+          0.0,
+          0.0,
+          140.0,
+          999.2217898964882,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "canonical_cost_usd": 413.9366556172896,
+      "absolute_cost_error": 0.0
+    },
+    {
+      "fixture": "volume_and_exactly_once",
+      "case": "two_routes",
+      "passed": true,
+      "native_solution_feasible": true,
+      "canonical_feasible": true,
+      "native_route_resources": [
+        [
+          413.9366556172896,
+          2.0,
+          6.0,
+          0.0,
+          0.0,
+          2.0,
+          999.2217898964882,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          413.9366556172896,
+          2.0,
+          6.0,
+          0.0,
+          0.0,
+          2.0,
+          999.2217898964882,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "canonical_cost_usd": 827.8733112345792,
+      "absolute_cost_error": 0.0
+    },
+    {
+      "fixture": "volume_and_exactly_once",
+      "case": "over_capacity",
+      "passed": true,
+      "native_solution_feasible": false,
+      "canonical_feasible": false,
+      "native_route_resources": [
+        [
+          414.0884065900523,
+          3.0,
+          12.0,
+          0.0,
+          0.0,
+          3.0,
+          998.8326848447323,
+          0.0,
+          0.0,
+          2.0
+        ]
+      ]
+    },
+    {
+      "fixture": "volume_and_exactly_once",
+      "case": "missing",
+      "passed": true,
+      "native_solution_feasible": false,
+      "canonical_feasible": false,
+      "native_route_resources": [
+        [
+          413.9366556172896,
+          2.0,
+          6.0,
+          0.0,
+          0.0,
+          2.0,
+          999.2217898964882,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "fixture": "volume_and_exactly_once",
+      "case": "duplicate",
+      "passed": true,
+      "native_solution_feasible": false,
+      "canonical_feasible": false,
+      "native_route_resources": [
+        [
+          413.9366556172896,
+          2.0,
+          6.0,
+          0.0,
+          0.0,
+          2.0,
+          999.2217898964882,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          414.0884065900523,
+          3.0,
+          12.0,
+          0.0,
+          0.0,
+          3.0,
+          998.8326848447323,
+          0.0,
+          0.0,
+          2.0
+        ]
+      ]
+    },
+    {
+      "fixture": "volume_and_exactly_once",
+      "case": "empty_extra",
+      "passed": true,
+      "native_solution_feasible": false,
+      "canonical_feasible": false,
+      "native_route_resources": [
+        [
+          413.9366556172896,
+          2.0,
+          6.0,
+          0.0,
+          0.0,
+          2.0,
+          999.2217898964882,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          413.9366556172896,
+          2.0,
+          6.0,
+          0.0,
+          0.0,
+          2.0,
+          999.2217898964882,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1000.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "fixture": "volume_and_exactly_once",
+      "case": "station_only_extra",
+      "passed": true,
+      "native_solution_feasible": false,
+      "canonical_feasible": false,
+      "native_route_resources": [
+        [
+          413.9366556172896,
+          2.0,
+          6.0,
+          0.0,
+          0.0,
+          2.0,
+          999.2217898964882,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          413.9366556172896,
+          2.0,
+          6.0,
+          0.0,
+          0.0,
+          2.0,
+          999.2217898964882,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          2.0,
+          0.0,
+          0.0,
+          0.0,
+          53.88067356745402,
+          999.6108949482441,
+          51.88067356745402,
+          1.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "fixture": "volume_and_exactly_once",
+      "case": "internal_depot",
+      "passed": true,
+      "native_solution_feasible": false,
+      "canonical_feasible": false,
+      "native_route_resources": [
+        [
+          414.2401575628149,
+          4.0,
+          12.0,
+          0.0,
+          0.0,
+          4.0,
+          998.4435797929764,
+          0.0,
+          0.0,
+          2.0
+        ]
+      ]
+    },
+    {
+      "fixture": "weighted_not_distance_only",
+      "case": "one_vehicle_cheaper",
+      "passed": true,
+      "native_solution_feasible": true,
+      "canonical_feasible": true,
+      "native_route_resources": [
+        [
+          429.1117528935542,
+          102.0,
+          2.0,
+          0.0,
+          0.0,
+          3.0,
+          960.311286509037,
+          0.0,
+          0.0,
+          2.0
+        ]
+      ],
+      "canonical_cost_usd": 429.1117528935542,
+      "absolute_cost_error": 0.0
+    },
+    {
+      "fixture": "weighted_not_distance_only",
+      "case": "two_vehicles_shorter",
+      "passed": true,
+      "native_solution_feasible": true,
+      "canonical_feasible": true,
+      "native_route_resources": [
+        [
+          413.9366556172896,
+          2.0,
+          1.0,
+          0.0,
+          0.0,
+          2.0,
+          999.2217898964882,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          413.9366556172896,
+          2.0,
+          1.0,
+          0.0,
+          0.0,
+          2.0,
+          999.2217898964882,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "canonical_cost_usd": 827.8733112345792,
+      "absolute_cost_error": 0.0
+    },
+    {
+      "fixture": "weighted_not_lexicographic",
+      "case": "one_vehicle_costlier",
+      "passed": true,
+      "native_solution_feasible": true,
+      "canonical_feasible": true,
+      "native_route_resources": [
+        [
+          1020.9405466678734,
+          4002.0,
+          2.0,
+          0.0,
+          0.0,
+          3.0,
+          3442.801623880863,
+          0.0,
+          0.0,
+          2.0
+        ]
+      ],
+      "canonical_cost_usd": 1020.9405466678734,
+      "absolute_cost_error": 0.0
+    },
+    {
+      "fixture": "weighted_not_lexicographic",
+      "case": "two_vehicles_cheaper",
+      "passed": true,
+      "native_solution_feasible": true,
+      "canonical_feasible": true,
+      "native_route_resources": [
+        [
+          413.9366556172896,
+          2.0,
+          1.0,
+          0.0,
+          0.0,
+          2.0,
+          4999.221789896488,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          413.9366556172896,
+          2.0,
+          1.0,
+          0.0,
+          0.0,
+          2.0,
+          4999.221789896488,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "canonical_cost_usd": 827.8733112345792,
+      "absolute_cost_error": 0.0
+    }
+  ]
+}

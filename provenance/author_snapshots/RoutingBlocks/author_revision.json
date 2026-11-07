@@ -1,0 +1,17 @@
+{
+  "expected_head": "2d2ee06c79b5d458b1aeeafd95a2b42b5441079a",
+  "git_diff_binary_sha256": "986bf6463860e2cf866d9d40b0d1485dafafb9c48dd8456b2f5f98e44dfc1674",
+  "head": "2d2ee06c79b5d458b1aeeafd95a2b42b5441079a",
+  "included_ignored_sources": [],
+  "included_untracked_sources": [
+    "bindings/src/specializations/FullRecharge.cpp",
+    "native/include/routingblocks/FullRechargeEvaluation.h"
+  ],
+  "omitted_untracked_files": [],
+  "patch_covers": "git diff --binary --full-index HEAD (staged and unstaged tracked changes)",
+  "repository": "/data/Maojie/Other_benchmark/vendor/RoutingBlocks",
+  "schema": "pinned_author_worktree_snapshot_v1",
+  "status_porcelain": " M bindings/CMakeLists.txt\n M bindings/src/LocalSearch.cpp\n M bindings/src/bindings.cpp\n M native/include/routingblocks/FRVCP.h\n M native/include/routingblocks/LocalSearch.h\n M native/include/routingblocks/operators/SwapOperator.h\n M native/include/routingblocks/types.h\n M native/src/operators/InsertStationOperator.cpp\n?? bindings/src/specializations/FullRecharge.cpp\n?? native/include/routingblocks/FullRechargeEvaluation.h\n",
+  "tracked_source_files_in_snapshot": 202,
+  "untracked_source_handling": "Actual file content is packaged under source/Other_benchmark/vendor; it is not assumed to occur in git diff."
+}
