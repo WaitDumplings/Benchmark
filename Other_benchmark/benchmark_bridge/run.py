@@ -312,10 +312,30 @@ def solve(job, solver, root, budget, checkpoints, provenance, manifest_hash):
             native_feasible_disagreement_count=replay.native_feasible_disagreements,
             native_objective_disagreement_count=replay.native_objective_disagreements)
         native_status = {}
+        status_read_warnings = []
         for status_file in (attempt / "native_stop.json", attempt / "events.status.json",
                             attempt / "adapter_manifest.json"):
             if status_file.exists():
-                native_status[status_file.name] = json.loads(status_file.read_text())
+                raw_status = status_file.read_bytes()
+                try:
+                    native_status[status_file.name] = json.loads(raw_status.decode("utf-8"))
+                except (json.JSONDecodeError, UnicodeError) as exc:
+                    # The watchdog can interrupt these optional sidecars mid-write.
+                    # Only its confirmed SIGKILL permits incomplete metadata; a
+                    # normal/native-error exit must still expose corrupt output.
+                    if not (execution["terminated_by_time_limit"] and
+                            execution["exit_code"] == -signal.SIGKILL):
+                        raise
+                    status_read_warnings.append({
+                        "reason": "optional_status_interrupted_by_deadline",
+                        "file_name": status_file.name, "path": str(status_file),
+                        "size_bytes": len(raw_status),
+                        "sha256": hashlib.sha256(raw_status).hexdigest(),
+                        "error_type": type(exc).__name__, "error": str(exc),
+                        "raw_file_preserved": True,
+                    })
+        if status_read_warnings:
+            native_status["status_read_warnings"] = status_read_warnings
         summary["stage_times_json"] = json_text(native_status)
         if status.startswith("ERROR"):
             summary["errors"] = json_text({"exit_code": execution["exit_code"],
